@@ -2,7 +2,7 @@ const fs = require("fs");
 require("dotenv").config();
 const octokit = require("@octokit/core");
 
-const client = new octokit.Octokit({ auth: process.env.GH_TOKEN });
+const client = new octokit.Octokit({ auth: process.env.GITHUB_TOKEN });
 
 function getNewTemplateSection() {
 	return fs.readFileSync("template.md").toString();
