@@ -10,7 +10,7 @@ function getNewTemplateSection() {
 
 async function writeReadMe() {
 	try {
-		const res = await client.request(`GET /repos/tuxrace/react-merchants/contents/README.md`);
+		const res = await client.request(`GET /repos/tuxrace/github-action-update-readme/contents/README.md`);
 		const { path, sha, content, encoding } = res.data;
 		const rawContent = Buffer.from(content, encoding).toString();
 		const startIndex = rawContent.indexOf("## Other Projects");
@@ -19,7 +19,7 @@ async function writeReadMe() {
 	} catch (error) {
 		try {
 			const content = `\n${getNewTemplateSection()}`;
-			await client.request(`PUT /repos/tuxrace/react-merchants/contents/README.md`, {
+			await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/README.md`, {
 				message: "Write README",
 				content: Buffer.from(content, "utf-8").toString(encoding),
 			});
@@ -31,7 +31,7 @@ async function writeReadMe() {
 
 async function writeNewReadme(path, sha, encoding, updatedContent) {
 	try {
-		await client.request(`PUT /repos/tuxrace/react-merchants/contents/{path}`, {
+		await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/{path}`, {
 			message: "Write README",
 			content: Buffer.from(updatedContent, "utf-8").toString(encoding),
 			path,
