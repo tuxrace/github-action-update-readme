@@ -1,4 +1,4 @@
-name: Write README
+name: Update READMEs
 
 on:
   push:
