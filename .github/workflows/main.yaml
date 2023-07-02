@@ -1,6 +1,9 @@
 name: Update READMEs
 
 on:
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "0 */12 * * *"
   push:
     paths:
       - "template.md"
