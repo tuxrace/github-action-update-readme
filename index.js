@@ -13,6 +13,7 @@ async function writeReadMe() {
 	try {
 		const res = await client.request(`GET /repos/tuxrace/github-action-update-readme/contents/README.md`);
 		const { path, sha, content, encoding } = res.data;
+    console.log(res.data)
 		const rawContent = Buffer.from(content, encoding).toString();
 		const startIndex = rawContent.indexOf("## Other Projects");
 		const updatedContent = `${startIndex === -1 ? rawContent : rawContent.slice(0, startIndex)}\n${getNewTemplateSection()}`;
