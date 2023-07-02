@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "TOKEN"
     env:
-        GH_TOKEN: ${{ vars.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
