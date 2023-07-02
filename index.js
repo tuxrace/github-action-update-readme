@@ -23,7 +23,7 @@ async function writeReadMe() {
 			const content = `\n${getNewTemplateSection()}`;
 			await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/README.md`, {
 				message: "Write README",
-				content: Buffer.from(content, "utf-8").toString(encoding),
+				content: Buffer.from(content, "utf-8").toString('base64'),
 			});
 		} catch (err) {
 			console.log(err);
