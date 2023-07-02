@@ -19,15 +19,7 @@ async function writeReadMe() {
 		const updatedContent = `${startIndex === -1 ? rawContent : rawContent.slice(0, startIndex)}\n${getNewTemplateSection()}`;
 		writeNewReadme(path, sha, encoding, updatedContent);
 	} catch (error) {
-		try {
-			const content = `\n${getNewTemplateSection()}`;
-			await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/README.md`, {
-				message: "Write README",
-				content: Buffer.from(content, "utf-8").toString('base64'),
-			});
-		} catch (err) {
-			console.log(err);
-		}
+			console.log(error);
 	}
 }
 
@@ -35,7 +27,7 @@ async function writeNewReadme(path, sha, encoding, updatedContent) {
 	try {
 		await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/{path}`, {
 			message: "Write README",
-			content: Buffer.from(updatedContent, "utf-8").toString(encoding),
+			content: Buffer.from(updatedContent, "utf-8").toString('base64'),
 			path,
 			sha,
 		});
