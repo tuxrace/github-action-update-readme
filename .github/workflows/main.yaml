@@ -1,9 +1,9 @@
 name: write READMEs
 
 on:
-  # Triggers the workflow every 12 hours
+  # Triggers the workflow every 8 hours
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */8 * * *"
   push:
     paths:
       - "template.md"

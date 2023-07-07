@@ -27,7 +27,7 @@ async function writeNewReadme(path, sha, encoding, updatedContent) {
 	try {
 		await client.request(`PUT /repos/tuxrace/github-action-update-readme/contents/${path}`, {
 			message: "Write README",
-			content: Buffer.from(updatedContent, "utf-8").toString('base64'),
+			content: Buffer.from(updatedContent, "utf-8").toString(encoding),
 			path,
 			sha,
 		});
